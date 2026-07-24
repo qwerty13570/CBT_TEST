@@ -2,7 +2,7 @@
   "meta": {
     "app": "등용문 CBT",
     "version": "netlify-webp-portable",
-    "exportedAt": "2026-07-24T13:45:21.813Z",
+    "exportedAt": "2026-07-24T13:48:15.067Z",
     "note": "Netlify 배포용 데이터입니다. 문제 이미지는 images 폴더의 WebP 파일을 참조합니다."
   },
   "subjects": [
@@ -60,6 +60,109 @@
             {
               "id": "q_mr225fbt_ea8zq2",
               "image": "images/q_q_mr225fbt_ea8zq2.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mryzwl2b_9ogbnq",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "찐막 테스트",
+          "questions": [
+            {
+              "id": "q_mryzwl2b_u46uhd",
+              "image": "images/q_전기기능사_찐막_테스트_001_000006.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_h1qivq",
+              "image": "images/q_전기기능사_찐막_테스트_002_000007.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_26o7qr",
+              "image": "images/q_전기기능사_찐막_테스트_003_000008.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_dtx6rf",
+              "image": "images/q_전기기능사_찐막_테스트_004_000009.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_js6pjb",
+              "image": "images/q_전기기능사_찐막_테스트_005_000010.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_qwfqp1",
+              "image": "images/q_전기기능사_찐막_테스트_006_000011.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_mjd88l",
+              "image": "images/q_전기기능사_찐막_테스트_007_000012.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_clhc7h",
+              "image": "images/q_전기기능사_찐막_테스트_008_000013.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_xg83n2",
+              "image": "images/q_전기기능사_찐막_테스트_009_000014.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_vgyyur",
+              "image": "images/q_전기기능사_찐막_테스트_010_000015.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_zp326r",
+              "image": "images/q_전기기능사_찐막_테스트_011_000016.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryzwl2b_x4cp5y",
+              "image": "images/q_전기기능사_찐막_테스트_012_000017.webp",
               "answer": 1,
               "explainType": "none",
               "explainText": "",

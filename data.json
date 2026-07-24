@@ -2,7 +2,7 @@
   "meta": {
     "app": "등용문 CBT",
     "version": "netlify-webp-portable",
-    "exportedAt": "2026-07-24T13:34:16.459Z",
+    "exportedAt": "2026-07-24T13:41:49.211Z",
     "note": "Netlify 배포용 데이터입니다. 문제 이미지는 images 폴더의 WebP 파일을 참조합니다."
   },
   "subjects": [
@@ -202,69 +202,6 @@
               "id": "q_mr24oa1v_yx2rmk",
               "image": "images/q_q_mr24oa1v_yx2rmk.webp",
               "answer": 2,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            }
-          ]
-        },
-        {
-          "id": "e_mryzeh56_sa0gbt",
-          "groupId": "g_mr1ueq7u_4lnzbj",
-          "title": "마지막 테스트",
-          "questions": [
-            {
-              "id": "q_mryzeh56_s2dlgi",
-              "image": "images/q_전기기능사_마지막_테스트_001_000021.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_70j2ju",
-              "image": "images/q_전기기능사_마지막_테스트_002_000022.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_pv1nym",
-              "image": "images/q_전기기능사_마지막_테스트_003_000023.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_o27hau",
-              "image": "images/q_전기기능사_마지막_테스트_004_000024.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_2mzsn9",
-              "image": "images/q_전기기능사_마지막_테스트_005_000025.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_3xdzeh",
-              "image": "images/q_전기기능사_마지막_테스트_006_000026.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryzeh56_d5fy9k",
-              "image": "images/q_전기기능사_마지막_테스트_007_000027.webp",
-              "answer": 1,
               "explainType": "none",
               "explainText": "",
               "explainImage": ""

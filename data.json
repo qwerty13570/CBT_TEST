@@ -2,7 +2,7 @@
   "meta": {
     "app": "등용문 CBT",
     "version": "netlify-webp-portable",
-    "exportedAt": "2026-07-24T13:13:53.675Z",
+    "exportedAt": "2026-07-24T13:31:26.933Z",
     "note": "Netlify 배포용 데이터입니다. 문제 이미지는 images 폴더의 WebP 파일을 참조합니다."
   },
   "subjects": [
@@ -213,45 +213,8 @@
     {
       "id": "s_mr1ui1fm_rzw29v",
       "title": "전기기사",
-      "groups": [
-        {
-          "id": "g_mryynpmx_9a703a",
-          "title": "전기기사 2027년 1회차"
-        }
-      ],
-      "exams": [
-        {
-          "id": "e_mryylyn5_yb65h6",
-          "groupId": "g_mryynpmx_9a703a",
-          "title": "2026년 3회차 복원_9",
-          "questions": [
-            {
-              "id": "q_mryylyn5_7d3ijo",
-              "image": "images/q_전기기사_2026년_3회차_복원_9_001_000021.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryylyn5_b4imel",
-              "image": "images/q_전기기사_2026년_3회차_복원_9_002_000022.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mryylyn5_bwk43x",
-              "image": "images/q_전기기사_2026년_3회차_복원_9_003_000023.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            }
-          ]
-        }
-      ]
+      "groups": [],
+      "exams": []
     },
     {
       "id": "s_mr1ut8sq_v8l8hi",

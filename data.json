@@ -1,0 +1,348 @@
+{
+  "meta": {
+    "app": "등용문 CBT",
+    "version": "portable-webp-stable-v2",
+    "exportedAt": "2026-07-24T12:57:43.586Z",
+    "note": "배포용 데이터입니다. 실제 이미지는 images 폴더에 있으며 파일명은 문제 ID 기준으로 고정됩니다."
+  },
+  "subjects": [
+    {
+      "id": "s_mr1uejbs_2wdeaa",
+      "title": "전기기능사",
+      "groups": [
+        {
+          "id": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원"
+        }
+      ],
+      "exams": [
+        {
+          "id": "e_mr221jkx_lp4w6j",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_1",
+          "questions": [
+            {
+              "id": "q_mr221jkx_mhjolz",
+              "image": "images/q_q_mr221jkx_mhjolz.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr221jkx_wp9l4b",
+              "image": "images/q_q_mr221jkx_wp9l4b.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr221jkx_8hu3om",
+              "image": "images/q_q_mr221jkx_8hu3om.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr221jkx_82rltp",
+              "image": "images/q_q_mr221jkx_82rltp.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr221jkx_ohoz5n",
+              "image": "images/q_q_mr221jkx_ohoz5n.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mr223alt_0yqqd2",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_2",
+          "questions": [
+            {
+              "id": "q_mr223alt_bj01p5",
+              "image": "images/q_q_mr223alt_bj01p5.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr223alt_0pvsp1",
+              "image": "images/q_q_mr223alt_0pvsp1.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr223alt_zcyooi",
+              "image": "images/q_q_mr223alt_zcyooi.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr223alt_f7c1r9",
+              "image": "images/q_q_mr223alt_f7c1r9.webp",
+              "answer": 4,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr223alt_lfxsia",
+              "image": "images/q_q_mr223alt_lfxsia.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mr225fbt_mjafmc",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_3",
+          "questions": [
+            {
+              "id": "q_mr225fbt_8cs1tn",
+              "image": "images/q_q_mr225fbt_8cs1tn.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr225fbt_zfq7m2",
+              "image": "images/q_q_mr225fbt_zfq7m2.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr225fbt_0l19os",
+              "image": "images/q_q_mr225fbt_0l19os.webp",
+              "answer": 4,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr225fbt_tmse3x",
+              "image": "images/q_q_mr225fbt_tmse3x.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr225fbt_ea8zq2",
+              "image": "images/q_q_mr225fbt_ea8zq2.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mr22kx2h_530cfc",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_5",
+          "questions": [
+            {
+              "id": "q_mr22kx2h_rqupww",
+              "image": "images/q_q_mr22kx2h_rqupww.webp",
+              "answer": 4,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22kx2h_vwwjy1",
+              "image": "images/q_q_mr22kx2h_vwwjy1.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22kx2h_iyd30h",
+              "image": "images/q_q_mr22kx2h_iyd30h.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22kx2h_36yryx",
+              "image": "images/q_q_mr22kx2h_36yryx.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22kx2h_b30upo",
+              "image": "images/q_q_mr22kx2h_b30upo.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mr22mype_2l8i9w",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_7",
+          "questions": [
+            {
+              "id": "q_mr22mype_c62ln3",
+              "image": "images/q_q_mr22mype_c62ln3.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22mype_yqew47",
+              "image": "images/q_q_mr22mype_yqew47.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22mype_dv5phh",
+              "image": "images/q_q_mr22mype_dv5phh.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22mype_wygb6e",
+              "image": "images/q_q_mr22mype_wygb6e.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr22mype_b4zyt2",
+              "image": "images/q_q_mr22mype_b4zyt2.webp",
+              "answer": 3,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mr24oa1v_v9ilzv",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "2026년 3회차 복원_8",
+          "questions": [
+            {
+              "id": "q_mr24oa1v_o9rc5g",
+              "image": "images/q_q_mr24oa1v_o9rc5g.webp",
+              "answer": 4,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr24oa1v_dhb9vn",
+              "image": "images/q_q_mr24oa1v_dhb9vn.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr24oa1v_h1w031",
+              "image": "images/q_q_mr24oa1v_h1w031.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr24oa1v_1xt929",
+              "image": "images/q_q_mr24oa1v_1xt929.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mr24oa1v_yx2rmk",
+              "image": "images/q_q_mr24oa1v_yx2rmk.webp",
+              "answer": 2,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        },
+        {
+          "id": "e_mryy3iw9_9hrjcl",
+          "groupId": "g_mr1ueq7u_4lnzbj",
+          "title": "최종테스트",
+          "questions": [
+            {
+              "id": "q_mryy3iw9_hs63lu",
+              "image": "images/q_q_mryy3iw9_hs63lu.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryy3iw9_772tto",
+              "image": "images/q_q_mryy3iw9_772tto.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            },
+            {
+              "id": "q_mryy3iw9_tff6uv",
+              "image": "images/q_q_mryy3iw9_tff6uv.webp",
+              "answer": 1,
+              "explainType": "none",
+              "explainText": "",
+              "explainImage": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_mr1ui1fm_rzw29v",
+      "title": "전기기사",
+      "groups": [],
+      "exams": []
+    },
+    {
+      "id": "s_mr1ut8sq_v8l8hi",
+      "title": "전기산업기사",
+      "groups": [],
+      "exams": []
+    }
+  ],
+  "wrongNote": {}
+}

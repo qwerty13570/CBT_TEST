@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>등용문 CBT</title>
+<style>
+:root{
+  --bg:#f3f8ff;--bg2:#eef6ff;--card:#ffffff;--soft:#f7fbff;--text:#172033;--muted:#667085;
+  --line:#d7e3f3;--accent:#2563eb;--accent2:#0ea5e9;--good:#16a34a;--bad:#dc2626;--warn:#f59e0b;
+  --btn:#f0f7ff;--btnHover:#dceeff;--shadow:0 12px 30px rgba(37,99,235,.10)
+}
+body.dark{
+  --bg:#111827;--bg2:#0f172a;--card:#182235;--soft:#101827;--text:#e5e7eb;--muted:#a5b4c8;
+  --line:#334155;--accent:#60a5fa;--accent2:#38bdf8;--btn:#1f2a3d;--btnHover:#26364f;--shadow:0 12px 30px rgba(0,0,0,.25)
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans KR,sans-serif;min-height:100vh}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--card) 93%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{font-size:20px;margin:0;font-weight:850;letter-spacing:-.02em}
+h2{font-size:25px;margin:0 0 14px;letter-spacing:-.03em} h3{margin:0 0 10px}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 18px}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.right{margin-left:auto}.hidden{display:none!important}
+button,input,textarea,select{font:inherit}
+button{border:1px solid var(--line);border-radius:12px;background:var(--btn);color:var(--text);padding:10px 14px;cursor:pointer;font-weight:700}
+button:hover{background:var(--btnHover)}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}.danger{background:#fff1f2;border-color:#fecdd3;color:#b91c1c}.good{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}
+body.dark .danger{background:#3b1116;color:#fecdd3;border-color:#7f1d1d} body.dark .good{background:#102a1a;color:#bbf7d0;border-color:#14532d} body.dark .warn{background:#3a2508;color:#fde68a;border-color:#78350f}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--card);color:var(--text)} textarea{min-height:90px;resize:vertical}
+.small{font-size:13px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;background:var(--soft)}
+.sep{height:1px;background:var(--line);margin:14px 0}
+.subject-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.subject-card{cursor:pointer;transition:.15s transform,.15s box-shadow}.subject-card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(14,165,233,.15)}
+.subject-icon{width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#dbeafe,#cffafe);font-size:24px;margin-bottom:12px}
+body.dark .subject-icon{background:linear-gradient(135deg,#1e3a8a,#164e63)}
+.breadcrumb{margin-bottom:14px;color:var(--muted);font-size:14px}.breadcrumb button{padding:6px 9px;border-radius:9px}
+.group-box{margin:14px 0}.group-title{font-size:18px;font-weight:850;margin:0;color:var(--accent)}.group-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px}.group-body.hidden{display:none!important}
+.exam-list{display:flex;flex-direction:column;gap:10px}.group-panel{border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}.group-panel-head{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:16px 18px;cursor:pointer}.group-panel-title{font-size:20px;font-weight:900;color:var(--accent);text-align:center;flex:1}.group-panel-body{border-top:1px solid var(--line);padding:14px;background:var(--soft)}.group-panel-body.hidden{display:none!important}.exam-card{width:100%;min-height:74px}.exam-left{display:flex;align-items:center;gap:12px;min-width:0}.exam-check{width:20px;height:20px;accent-color:var(--accent)}.batchbar{position:sticky;top:70px;z-index:4;margin-bottom:14px;background:color-mix(in srgb,var(--card) 95%,transparent);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow)}
+.exam-card{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.exam-card .name{font-weight:850}.exam-card .meta{font-size:13px;color:var(--muted)}
+.qnav{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin-top:10px}.qnav button{padding:8px 0}.qnav .answered{border-color:var(--accent)}.qnav .wrong{background:rgba(220,38,38,.16);border-color:var(--bad)}.qnav .correct{background:rgba(22,163,74,.16);border-color:var(--good)}
+.question-box{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px;min-height:180px}.question-img,.explain-img{max-width:100%;border-radius:12px;border:1px solid var(--line);background:#fff;display:block;margin:10px auto}
+.answer-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.answer-buttons button{font-size:18px;padding:14px}.answer-buttons button.selected{outline:3px solid var(--accent);background:#dbeafe;color:#1d4ed8}body.dark .answer-buttons button.selected{background:#0c4a6e;color:#fff}
+.result{padding:12px;border-radius:12px;border:1px solid var(--line);margin:10px 0}.result.ok{border-color:#22c55e;background:rgba(34,197,94,.12)}.result.no{border-color:#ef4444;background:rgba(239,68,68,.12)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
+table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}.modal>.card{max-width:560px;width:100%}
+.pasteBox{border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;background:var(--soft);color:var(--muted);min-height:92px}.pasteBox:focus{outline:3px solid var(--accent)}.preview{max-height:220px;object-fit:contain}
+.badge{color:white;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:3px 9px;border-radius:999px;font-size:12px;font-weight:850}
+@media(max-width:720px){header{flex-direction:column;align-items:stretch}.answer-buttons{grid-template-columns:repeat(2,1fr)}.wrap{padding:14px}.exam-card{align-items:flex-start;flex-direction:column}}
+
+.select-toolbar{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:30;width:min(1120px,calc(100% - 24px));background:color-mix(in srgb,var(--card) 96%,transparent);border:1px solid var(--line);border-radius:20px;padding:12px 14px;box-shadow:0 18px 50px rgba(37,99,235,.18);backdrop-filter:blur(10px)}
+.select-toolbar .mainline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.select-toolbar .hint{font-size:13px;color:var(--muted);margin-top:6px}
+.subjectViewPadding{padding-bottom:110px}
+.exam-card.select-only{cursor:pointer;justify-content:space-between;min-height:68px}
+.exam-card.select-only:hover{background:var(--soft)}
+.exam-card.select-only .name{font-size:17px}
+.exam-card.select-only input{flex:0 0 auto}
+
+
+.editor-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.editor-row{display:grid;grid-template-columns:70px 1fr 100px 110px;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}
+.editor-row img{max-height:80px;max-width:100%;object-fit:contain;background:white;border:1px solid var(--line);border-radius:10px}
+.editor-row .pasteBox{min-height:72px;padding:12px}
+.editor-actions{position:sticky;top:70px;z-index:3;background:color-mix(in srgb,var(--card) 95%,transparent);border:1px solid var(--line);border-radius:16px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.pdf-grid{display:grid;grid-template-columns:320px 1fr;gap:14px}
+.pdf-preview{max-height:70vh;overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--soft);padding:10px}
+.pdf-preview canvas{max-width:100%;display:block;margin:10px auto;border:1px solid var(--line);background:white}
+.pdf-result{max-height:70vh;overflow:auto}
+.auto-q-card{border:1px solid var(--line);border-radius:14px;padding:10px;margin:8px 0;background:var(--card)}
+.auto-q-card img{max-width:100%;max-height:180px;object-fit:contain;background:white;border:1px solid var(--line);border-radius:10px}
+@media(max-width:900px){.pdf-grid{grid-template-columns:1fr}.editor-row{grid-template-columns:1fr}.editor-row img{max-height:180px}}
+
+
+.manual-wrap{display:grid;grid-template-columns:minmax(320px,1.2fr) minmax(320px,.8fr);gap:14px}
+.manual-page-box{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--soft);padding:10px;overflow:auto;max-height:78vh}
+.manual-canvas-holder{position:relative;display:inline-block}
+.manual-canvas-holder canvas{display:block;background:#fff;border:1px solid var(--line)}
+.crop-rect{position:absolute;border:3px solid #2563eb;background:rgba(37,99,235,.12);pointer-events:none}
+.crop-list{max-height:78vh;overflow:auto;border:1px solid var(--line);border-radius:16px;padding:10px;background:var(--soft)}
+.crop-item{display:grid;grid-template-columns:56px 1fr 80px 80px;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;margin:8px 0}
+.crop-item img{max-width:100%;max-height:90px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:8px}
+.manual-toolbar{position:sticky;top:70px;z-index:4;background:color-mix(in srgb,var(--card) 96%,transparent);border:1px solid var(--line);border-radius:16px;padding:10px;margin:10px 0;box-shadow:var(--shadow)}
+@media(max-width:900px){.manual-wrap{grid-template-columns:1fr}.crop-item{grid-template-columns:1fr}}
+
+
+.crop-del-check{width:18px;height:18px;accent-color:var(--bad)}
+.crop-delete-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.crop-delete-tools.hidden{display:none!important}
+
+
+.edit-delete-check{width:20px;height:20px;accent-color:var(--bad);margin-right:8px}
+.edit-delete-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}
+.edit-delete-tools.hidden{display:none!important}
+
+
+.exam-control-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.exam-control-row .grade-right{margin-left:auto}
+@media(max-width:720px){.exam-control-row .grade-right{margin-left:0;width:100%}}
+
+
+.solve-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:16px}
+.answer-sheet{position:sticky;top:86px;align-self:start;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:12px;max-height:calc(100vh - 110px);overflow:auto}
+.answer-sheet h3{margin:0 0 10px;text-align:center}
+.answer-row{display:grid;grid-template-columns:34px repeat(4,28px) 28px;gap:5px;align-items:center;padding:4px;border-radius:8px}
+.answer-row.current{background:rgba(37,99,235,.10)}
+.answer-row .qno{font-weight:800;color:var(--accent);cursor:pointer}
+.answer-bubble{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;background:var(--soft)}
+.answer-bubble.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.answer-check{width:24px;height:24px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--soft);font-size:14px}
+.answer-check.marked{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.check-toggle.marked{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.qnav button.marked{box-shadow:inset 0 -4px 0 #f59e0b}
+@media(max-width:900px){.solve-layout{grid-template-columns:1fr}.answer-sheet{position:relative;top:auto;max-height:none}}
+
+
+.manual-wrap.resizable-manual{display:grid;grid-template-columns:minmax(360px,var(--pdf-pane-width,65%)) 10px minmax(280px,1fr);gap:0;align-items:start}
+.manual-resizer{width:10px;cursor:col-resize;background:linear-gradient(180deg,transparent,var(--line),transparent);border-radius:999px;min-height:70vh;margin:0 8px}
+.manual-resizer:hover{background:var(--accent)}
+.manual-page-box{min-width:0}
+.crop-list{min-width:0}
+@media(max-width:900px){.manual-wrap.resizable-manual{display:block}.manual-resizer{display:none}}
+
+
+@media(max-width:720px){
+  .exam-control-row{gap:10px}
+  .exam-control-row .grade-right{margin-top:10px;padding:14px 18px}
+}
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>등용문 CBT</h1>
+  <div class="row">
+    <button onclick="showHome()">홈</button>
+    <button onclick="showWrongNote()">오답노트</button>
+    <button onclick="openAdminLogin()">관리자</button>
+    <button id="adminExitBtn" class="hidden" onclick="exitAdmin()">관리자 나가기</button>
+    <button onclick="toggleTheme()">다크/라이트</button>
+    <button id="netlifyZipBtn" class="hidden" onclick="exportNetlifyZip()">Netlify ZIP 내보내기</button>
+  </div>
+</header>
+<div class="wrap">
+  <section id="homeView"></section>
+  <section id="subjectView" class="hidden"></section>
+  <section id="examView" class="hidden"></section>
+  <section id="wrongView" class="hidden"></section>
+  <section id="adminView" class="hidden"></section>
+</div>
+<div id="modalRoot"></div>
+<script>
+const DBKEY='cbt_manager_db_v3';
+const OLDKEYS=['cbt_manager_db_v1'];
+const STATEKEY='cbt_manager_state_v3';
+const _gate='deungyongmun';
+let db=loadDB(), state=loadState(), adminOn=false;
+let session={subjectId:null,examId:null,qids:[],idx:0,answers:{},checked:false,results:{}};
+let editDeleteMode=false;
+let editDeleteSelected=new Set();
+
+function uid(prefix='id'){return prefix+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8)}
+function saveDB(){localStorage.setItem(DBKEY,JSON.stringify(db))}
+function loadDB(){
+  try{
+    let raw=localStorage.getItem(DBKEY);
+    if(!raw){for(const k of OLDKEYS){if(localStorage.getItem(k)){raw=localStorage.getItem(k);break}}}
+    const data=raw?JSON.parse(raw):{subjects:[],wrongNote:{}};
+    normalizeDB(data); return data;
+  }catch(e){return {subjects:[],wrongNote:{}}}
+}
+function normalizeDB(data){
+  data.subjects=data.subjects||[]; data.wrongNote=data.wrongNote||{};
+  data.subjects.forEach(s=>{s.groups=s.groups||[{id:'default',title:'기본'}];(s.exams||[]).forEach(e=>{e.groupId=e.groupId||'default';e.questions=e.questions||[]})});
+}
+function loadState(){try{return JSON.parse(localStorage.getItem(STATEKEY))||{}}catch(e){return {}}}
+function saveState(){localStorage.setItem(STATEKEY,JSON.stringify(state))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function hideAll(){['homeView','subjectView','examView','wrongView','adminView'].forEach(id=>document.getElementById(id).classList.add('hidden'))}
+function getSubject(id){return db.subjects.find(s=>s.id===id)}
+function getExam(sid,eid){return getSubject(sid)?.exams.find(e=>e.id===eid)}
+function getQuestion(sid,eid,qid){return getExam(sid,eid)?.questions.find(q=>q.id===qid)}
+function applyTheme(){document.body.classList.toggle('dark',(localStorage.getItem('cbt_theme')||'light')==='dark')}
+function toggleTheme(){localStorage.setItem('cbt_theme',document.body.classList.contains('dark')?'light':'dark');applyTheme()}
+function updateAdminButton(){const b=document.getElementById('adminExitBtn'),z=document.getElementById('netlifyZipBtn');if(b)b.classList.toggle('hidden',!adminOn);if(z)z.classList.toggle('hidden',!adminOn)}
+function exitAdmin(){
+ adminOn=false;
+ updateAdminButton();
+ const adminView=document.getElementById('adminView');
+ if(adminView && !adminView.classList.contains('hidden')) showHome();
+}
+
+function showHome(){
+ hideAll(); const el=document.getElementById('homeView'); el.classList.remove('hidden');
+ if(!db.subjects.length){
+  el.innerHTML=`<div class="card"><h2>종목을 추가하세요</h2><p class="small">관리자 모드에서 종목/회차/문제를 추가할 수 있습니다. Netlify 공유용은 data.json 내보내기 후 index.html과 함께 올리면 됩니다.</p><button class="primary" onclick="openAdminLogin()">관리자 모드</button></div>`;return;
+ }
+ el.innerHTML=`<div class="row" style="margin-bottom:16px"><h2 style="margin:0">종목 선택</h2><span class="pill">총 ${db.subjects.length}개 종목</span></div>
+ <div class="subject-list">${db.subjects.map(s=>`
+  <div class="card subject-card" onclick="showSubject('${s.id}')">
+    <div class="subject-icon">📘</div>
+    <h3>${esc(s.title)}</h3>
+    <p class="small">회차 ${s.exams.length}개 · 문제 ${s.exams.reduce((a,e)=>a+e.questions.length,0)}개</p>
+    <button class="primary">이 종목 선택</button>
+  </div>`).join('')}</div>`;
+}
+
+function groupCollapseKey(sid,gid){return `cbt_group_collapsed_${sid}_${gid}`}
+function isGroupCollapsed(sid,gid){return localStorage.getItem(groupCollapseKey(sid,gid))==='1'}
+function toggleGroup(sid,gid){
+ const key=groupCollapseKey(sid,gid);
+ localStorage.setItem(key,isGroupCollapsed(sid,gid)?'0':'1');
+ const body=document.getElementById(`group_body_${sid}_${gid}`);
+ const btn=document.getElementById(`group_btn_${sid}_${gid}`);
+ const collapsed=isGroupCollapsed(sid,gid);
+ if(body) body.classList.toggle('hidden',collapsed);
+ if(btn) btn.textContent=collapsed?'펼치기':'접기';
+}
+
+
+let selectedExams = new Set();
+
+function selKey(sid,eid){return sid+'|'+eid}
+function setExamSelected(sid,eid,checked){
+  const k=selKey(sid,eid);
+  if(checked) selectedExams.add(k); else selectedExams.delete(k);
+  updateSelectedCount();
+}
+function toggleExamCheck(card,sid,eid){
+  const cb=card.querySelector('input[type="checkbox"]');
+  cb.checked=!cb.checked;
+  setExamSelected(sid,eid,cb.checked);
+}
+function updateSelectedCount(){
+  const el=document.getElementById('selectedCount');
+  if(el) el.textContent=selectedExams.size;
+}
+function selectAllVisibleExams(sid){
+  const s=getSubject(sid); if(!s)return;
+  s.exams.forEach(e=>selectedExams.add(selKey(sid,e.id)));
+  showSubject(sid);
+}
+function clearSelectedExams(sid){
+  if(sid){
+    const s=getSubject(sid); if(s) s.exams.forEach(e=>selectedExams.delete(selKey(sid,e.id)));
+  }else selectedExams.clear();
+  showSubject(sid);
+}
+function startSelectedExams(sid,shuffle){
+  const s=getSubject(sid); if(!s)return;
+  let selected=s.exams.filter(e=>selectedExams.has(selKey(sid,e.id)));
+  if(!selected.length){alert('풀 회차를 선택하세요.');return;}
+  let qrefs=[];
+  selected.forEach(e=>e.questions.forEach(q=>qrefs.push({eid:e.id,qid:q.id})));
+  if(shuffle){
+    for(let i=qrefs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[qrefs[i],qrefs[j]]=[qrefs[j],qrefs[i]]}
+  }
+  session={subjectId:sid, examId:null, qids:qrefs.map(x=>x.qid), qrefs:qrefs, idx:0, answers:{}, checked:false, results:{}, title:`선택 ${selected.length}개 회차`, shuffle:!!shuffle};
+  renderExam();
+}
+
+function showSubject(sid){
+ hideAll(); const el=document.getElementById('subjectView'); el.classList.remove('hidden');
+ el.classList.add('subjectViewPadding');
+ const s=getSubject(sid); if(!s)return showHome();
+ const groups=s.groups||[{id:'default',title:'기본'}];
+ el.innerHTML=`<div class="breadcrumb"><button onclick="showHome()">← 종목 선택</button> / ${esc(s.title)}</div>
+ <div class="row" style="margin-bottom:16px"><h2 style="margin:0">${esc(s.title)}</h2><span class="pill">회차 ${s.exams.length}개</span></div>
+ <div class="select-toolbar">
+   <div class="mainline">
+     <b>선택 풀이</b>
+     <span class="pill">선택 <span id="selectedCount">${[...selectedExams].filter(k=>k.startsWith(s.id+'|')).length}</span>개 회차</span>
+     <button onclick="selectAllVisibleExams('${s.id}')">전체 선택</button>
+     <button onclick="clearSelectedExams('${s.id}')">전체 해제</button>
+     <button class="primary" onclick="startSelectedExams('${s.id}',false)">선택 회차 풀기</button>
+     <button class="primary" onclick="startSelectedExams('${s.id}',true)">문제 순서 섞어서 풀기</button>
+   </div>
+   <div class="hint">여러 회차를 체크하면 선택한 회차의 모든 문제가 하나의 시험처럼 구성됩니다.</div>
+ </div>
+ ${groups.map(g=>{
+  const exams=s.exams.filter(e=>(e.groupId||'default')===g.id);
+  if(!exams.length)return '';
+  const collapsed=isGroupCollapsed(s.id,g.id);
+  return `<div class="group-panel">
+    <div class="group-panel-head" onclick="toggleGroup('${s.id}','${g.id}')">
+      <span>${collapsed?'▶':'▼'}</span>
+      <div class="group-panel-title">${esc(g.title)}</div>
+      <span class="pill">${exams.length}개 회차</span>
+      <button id="group_btn_${s.id}_${g.id}" onclick="event.stopPropagation();toggleGroup('${s.id}','${g.id}')">${collapsed?'펼치기':'접기'}</button>
+    </div>
+    <div id="group_body_${s.id}_${g.id}" class="group-panel-body ${collapsed?'hidden':''}">
+      <div class="exam-list">${exams.map(e=>`
+        <div class="card exam-card select-only" onclick="toggleExamCheck(this,'${s.id}','${e.id}')">
+          <div class="exam-left">
+            <input class="exam-check" type="checkbox" ${selectedExams.has(selKey(s.id,e.id))?'checked':''} onclick="event.stopPropagation()" onchange="setExamSelected('${s.id}','${e.id}',this.checked)">
+            <div><div class="name">${esc(e.title)}</div><div class="meta">${e.questions.length}문제</div></div>
+          </div>
+          <span class="pill">${e.questions.length}문제</span>
+        </div>`).join('')}</div>
+    </div>
+  </div>`
+ }).join('') || '<div class="card small">등록된 회차가 없습니다.</div>'}`;
+}
+function previewExam(sid,eid){startExam(sid,eid)}
+
+function startExam(sid,eid){
+ const e=getExam(sid,eid); if(!e)return;
+ session={subjectId:sid,examId:eid,qids:e.questions.map(q=>q.id),idx:0,answers:{},checked:false,results:{}};
+ renderExam();
+}
+
+function markKey(sid,eid,qid){return `cbt_mark_${sid}_${eid}_${qid}`}
+function isMarked(sid,eid,qid){return localStorage.getItem(markKey(sid,eid,qid))==='1'}
+function toggleMarkedCurrent(){
+ const r=currentQRef();
+ const k=markKey(session.subjectId,r.eid,r.qid);
+ localStorage.setItem(k,isMarked(session.subjectId,r.eid,r.qid)?'0':'1');
+ renderExam();
+}
+function toggleMarkedRef(eid,qid){
+ const k=markKey(session.subjectId,eid,qid);
+ localStorage.setItem(k,isMarked(session.subjectId,eid,qid)?'0':'1');
+ renderExam();
+}
+function answerFromSheet(i,n){
+ goQ(i);
+ chooseAnswer(n);
+}
+function renderAnswerSheet(){
+ const refs=session.qrefs||session.qids.map(qid=>({eid:session.examId,qid}));
+ return `<aside class="answer-sheet">
+   <h3>답안 표기란</h3>
+   <div class="small" style="text-align:center;margin-bottom:8px">번호 클릭: 이동 · ☆ 클릭: 체크</div>
+   ${refs.map((r,i)=>{
+     const sel=session.answers[r.qid];
+     const marked=isMarked(session.subjectId,r.eid,r.qid);
+     return `<div class="answer-row ${i===session.idx?'current':''}">
+       <div class="qno" onclick="goQ(${i})">${i+1}</div>
+       ${[1,2,3,4].map(n=>`<div class="answer-bubble ${sel===n?'selected':''}" onclick="answerFromSheet(${i},${n})">${n}</div>`).join('')}
+       <div class="answer-check ${marked?'marked':''}" onclick="toggleMarkedRef('${r.eid}','${r.qid}')">${marked?'★':'☆'}</div>
+     </div>`;
+   }).join('')}
+ </aside>`;
+}
+
+function renderExam(){
+ hideAll(); const el=document.getElementById('examView'); el.classList.remove('hidden');
+ const s=getSubject(session.subjectId), ref=session.qrefs?session.qrefs[session.idx]:null, e=ref?getExam(session.subjectId,ref.eid):getExam(session.subjectId,session.examId), q=ref?getQuestion(session.subjectId,ref.eid,ref.qid):getQuestion(session.subjectId,session.examId,session.qids[session.idx]);
+ if(!q){el.innerHTML='<div class="card">문제를 찾을 수 없습니다.</div>';return}
+ const selected=session.answers[q.id];
+ el.innerHTML=`<div class="card">
+  <div class="row"><button onclick="showSubject('${s.id}')">← 회차 목록</button><span class="pill">${esc(s.title)}</span><span class="pill">${esc(session.title||e.title)}</span><span class="right badge">${session.idx+1} / ${session.qids.length}</span></div>
+  <!-- 상단 문제 번호 버튼 제거: 오른쪽 답안 표기란으로 통합 -->
+  <div class="sep"></div>
+  <div class="solve-layout">
+    <main>
+      <div class="question-box">${q.image?`<img class="question-img" src="${q.image}">`:`<div class="small">문제 이미지가 없습니다.</div>`}</div>
+      <div class="answer-buttons">${[1,2,3,4].map(n=>`<button class="${selected===n?'selected':''}" onclick="chooseAnswer(${n})">${n}</button>`).join('')}</div>
+      <div class="exam-control-row"><button onclick="prevQ()">이전</button><button onclick="nextQ()">다음</button><button class="check-toggle ${isMarked(session.subjectId,(currentQRef()).eid,(currentQRef()).qid)?'marked':''}" onclick="toggleMarkedCurrent()">${isMarked(session.subjectId,(currentQRef()).eid,(currentQRef()).qid)?'★ 체크됨':'☆ 문제 체크'}</button><button onclick="showExplanation()">해설</button><button class="primary grade-right" onclick="gradeSession()">채점</button></div>
+      <div>${renderQuestionResult(q)}</div>
+    </main>
+    ${renderAnswerSheet()}
+  </div>
+ </div>`;
+}
+function renderQuestionResult(q){if(!session.checked||session.results[q.id]===undefined)return '';const ok=session.results[q.id],ans=session.answers[q.id];return `<div class="result ${ok?'ok':'no'}">${ok?'정답':'오답'} · 선택 ${ans||'-'} / 정답 ${q.answer}</div>`}
+function currentQRef(){return session.qrefs?session.qrefs[session.idx]:{eid:session.examId,qid:session.qids[session.idx]}}
+function chooseAnswer(n){const r=currentQRef();session.answers[r.qid]=n;renderExam()}
+function goQ(i){session.idx=i;renderExam()} function prevQ(){if(session.idx>0)goQ(session.idx-1)} function nextQ(){if(session.idx<session.qids.length-1)goQ(session.idx+1)}
+function gradeSession(){
+ const refs=session.qrefs||session.qids.map(qid=>({eid:session.examId,qid}));
+ const missingIndex=refs.findIndex(r=>!session.answers[r.qid]);
+ if(missingIndex>=0){
+   alert(`${missingIndex+1}번 문제가 아직 안 풀렸습니다. 안 푼 문제로 이동합니다.`);
+   session.idx=missingIndex;
+   renderExam();
+   return;
+ }
+ session.checked=true;
+ let score=0;
+ refs.forEach(r=>{
+   const q=getQuestion(session.subjectId,r.eid,r.qid), ok=session.answers[r.qid]===q.answer;
+   session.results[r.qid]=ok;
+   if(ok) score++; else addWrong(session.subjectId,r.eid,r.qid);
+ });
+ saveDB();
+ alert(`채점 완료: ${score} / ${refs.length}`);
+ renderExam();
+}
+function showExplanation(){const r=currentQRef();const q=getQuestion(session.subjectId,r.eid,r.qid);let body=q.explainType==='image'&&q.explainImage?`<img class="explain-img" src="${q.explainImage}">`:q.explainText?`<p style="white-space:pre-wrap">${esc(q.explainText)}</p>`:'<p class="small">해설이 없습니다.</p>';modal(`<h3>해설</h3><div class="result ok">정답: ${q.answer}번</div>${body}<div class="row"><button onclick="closeModal()">닫기</button></div>`)}
+
+function wrongKey(sid,eid,qid){return `${sid}|${eid}|${qid}`} function addWrong(sid,eid,qid){
+ const s=getSubject(sid);
+ const e=s?getExam(sid,eid):null;
+ const q=e?getQuestion(sid,eid,qid):null;
+
+ // 깨진 데이터 또는 존재하지 않는 문제는 오답노트에 저장하지 않음
+ if(!sid || !eid || !qid || !s || !e || !q) return;
+
+ const idx=e.questions.findIndex(x=>x.id===qid);
+ if(idx<0) return;
+
+ const k=wrongKey(sid,eid,qid);
+ const it=db.wrongNote[k]||{sid,eid,qid,count:0,last:''};
+ it.count++;
+ it.last=new Date().toLocaleString();
+ db.wrongNote[k]=it;
+}
+
+function cleanWrongNote(){
+ const cleaned={};
+ Object.values(db.wrongNote||{}).forEach(it=>{
+   if(!it || !it.sid || !it.eid || !it.qid) return;
+   const s=getSubject(it.sid);
+   const e=s?getExam(it.sid,it.eid):null;
+   const q=e?getQuestion(it.sid,it.eid,it.qid):null;
+   if(!s || !e || !q) return;
+   const idx=e.questions.findIndex(x=>x.id===it.qid);
+   if(idx<0) return;
+   cleaned[wrongKey(it.sid,it.eid,it.qid)]={...it,sid:it.sid,eid:it.eid,qid:it.qid,count:it.count||1,last:it.last||''};
+ });
+ db.wrongNote=cleaned;
+ saveDB();
+}
+
+function showWrongNote(){cleanWrongNote();hideAll();const el=document.getElementById('wrongView');el.classList.remove('hidden');cleanWrongNote(); const items=Object.values(db.wrongNote||{});el.innerHTML=`<div class="card"><div class="row"><h2 style="margin:0">오답노트</h2><span class="pill">${items.length}문제</span><button class="primary" onclick="startWrongNoteExam()">오답만 풀기</button><button class="primary" onclick="startWrongNoteExam(true)">오답 섞어서 풀기</button><button class="danger right" onclick="clearWrongNote()">전체 삭제</button></div><div class="sep"></div>${items.length?`<table><tr><th>종목</th><th>회차</th><th>문제</th><th>횟수</th><th></th></tr>${items.map(it=>{const s=getSubject(it.sid),e=getExam(it.sid,it.eid),idx=e?e.questions.findIndex(q=>q.id===it.qid)+1:0;if(!s||!e||idx<=0)return '';return `<tr><td>${esc(s?.title||'-')}</td><td>${esc(e?.title||'-')}</td><td>${idx}</td><td>${it.count}회</td><td><button onclick="startFromWrong('${it.sid}','${it.eid}','${it.qid}')">풀기</button><button onclick="removeWrong('${wrongKey(it.sid,it.eid,it.qid)}')">삭제</button></td></tr>`}).join('')}</table>`:'<p class="small">오답이 없습니다.</p>'}</div>`}
+
+function startWrongNoteExam(shuffle=false){
+ cleanWrongNote(); const items=Object.values(db.wrongNote||{});
+ if(!items.length)return alert('오답노트에 문제가 없습니다.');
+ const first=items[0];
+ let refs=items.filter(it=>getQuestion(it.sid,it.eid,it.qid)).map(it=>({sid:it.sid,eid:it.eid,qid:it.qid}));
+ if(shuffle){for(let i=refs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[refs[i],refs[j]]=[refs[j],refs[i]]}}
+ // 현재 시험 엔진은 한 종목 기준이라, 여러 종목이 섞이면 첫 종목만 사용한다.
+ const sid=first.sid;
+ refs=refs.filter(r=>r.sid===sid);
+ session={subjectId:sid,examId:null,qids:refs.map(r=>r.qid),qrefs:refs.map(r=>({eid:r.eid,qid:r.qid})),idx:0,answers:{},checked:false,results:{},title:`오답노트 ${refs.length}문제`};
+ renderExam();
+}
+
+function startFromWrong(sid,eid,qid){startExam(sid,eid);const i=session.qids.indexOf(qid);if(i>=0)goQ(i)} function clearWrongNote(){if(confirm('오답노트를 비울까요?')){db.wrongNote={};saveDB();showWrongNote()}} function removeWrong(k){delete db.wrongNote[k];saveDB();showWrongNote()}
+
+function openAdminLogin(){modal(`<h3>관리자 모드</h3><p class="small">관리자 권한이 필요합니다. 비밀번호를 입력하세요.</p><input id="adminPw" type="password"><div class="row" style="margin-top:12px"><button class="primary" onclick="tryAdmin()">확인</button><button onclick="closeModal()">취소</button></div>`)}
+function tryAdmin(){const v=document.getElementById('adminPw').value.trim().toLowerCase();if(v===_gate){adminOn=true;updateAdminButton();closeModal();showAdmin()}else alert('비밀번호가 틀렸습니다.')}
+function showAdmin(){if(!adminOn)return openAdminLogin();hideAll();const el=document.getElementById('adminView');el.classList.remove('hidden');el.innerHTML=`<div class="tabs"><button class="tab active" onclick="adminSubjects()">종목/분류/회차 관리</button><button class="tab" onclick="adminAddExam()">문제 추가</button><button class="tab" onclick="adminEditQuestions()">문제 수정</button><button class="tab" onclick="adminPdfManual()">PDF 수동 박스 생성</button></div><div id="adminPanel"></div>`;adminSubjects()}
+function adminSubjects(){document.getElementById('adminPanel').innerHTML=`<div class="card"><h2>종목/분류/회차 관리</h2><div class="row"><input id="newSubject" placeholder="예: 전기기능사"><button class="primary" onclick="addSubject()">종목 추가</button></div><div class="sep"></div>${db.subjects.map(s=>`<div class="card" style="margin:12px 0"><div class="row"><b>${esc(s.title)}</b><button onclick="renameSubject('${s.id}')">이름수정</button><button class="danger" onclick="deleteSubject('${s.id}')">삭제</button></div><div class="sep"></div><div class="row"><input id="grp_${s.id}" placeholder="예: 2026년 복원 / 2025년 기출"><button onclick="addGroup('${s.id}')">분류 추가</button></div>${(s.groups||[]).map(g=>`<div class="exam"><div class="row"><b>${esc(g.title)}</b><button onclick="renameGroup('${s.id}','${g.id}')">분류명 수정</button><button class="danger" onclick="deleteGroup('${s.id}','${g.id}')">분류 삭제</button></div>${s.exams.filter(e=>(e.groupId||'default')===g.id).map(e=>`<div class="row" style="margin-top:7px"><span>└ ${esc(e.title)}</span><span class="pill">${e.questions.length}문제</span><button onclick="renameExam('${s.id}','${e.id}')">회차명 수정</button><button onclick="moveExamDialog('${s.id}','${e.id}')">위치 변경</button><button class="danger" onclick="deleteExam('${s.id}','${e.id}')">삭제</button></div>`).join('')}</div>`).join('')}</div>`).join('')}</div>`}
+function addSubject(){markLocalDirty();const t=document.getElementById('newSubject').value.trim();if(!t)return;db.subjects.push({id:uid('s'),title:t,groups:[{id:'default',title:'기본'}],exams:[]});saveDB();adminSubjects()}
+function renameSubject(sid){markLocalDirty();const s=getSubject(sid),t=prompt('새 종목명',s.title);if(t){s.title=t;saveDB();adminSubjects()}} function deleteSubject(sid){markLocalDirty();if(confirm('종목 전체 삭제?')){db.subjects=db.subjects.filter(s=>s.id!==sid);saveDB();adminSubjects()}}
+function addGroup(sid){markLocalDirty();const s=getSubject(sid),inp=document.getElementById('grp_'+sid),t=inp.value.trim();if(!t)return;s.groups.push({id:uid('g'),title:t});saveDB();adminSubjects()} function renameGroup(sid,gid){markLocalDirty();const s=getSubject(sid),g=s.groups.find(x=>x.id===gid),t=prompt('새 분류명',g.title);if(t){g.title=t;saveDB();adminSubjects()}}
+function deleteGroup(sid,gid){markLocalDirty();const s=getSubject(sid);if(s.exams.some(e=>(e.groupId||'default')===gid))return alert('이 분류에 회차가 있어 삭제할 수 없습니다. 먼저 회차를 옮기거나 삭제하세요.');s.groups=s.groups.filter(g=>g.id!==gid);saveDB();adminSubjects()}
+
+function moveExamDialog(sid,eid){
+ const s=getSubject(sid), e=getExam(sid,eid);
+ if(!s||!e)return alert('회차를 찾을 수 없습니다.');
+ const subjectOptions=db.subjects.map(sub=>`<option value="${sub.id}" ${sub.id===sid?'selected':''}>${esc(sub.title)}</option>`).join('');
+ modal(`<h3>회차 위치 변경</h3>
+   <p class="small">회차 "${esc(e.title)}"를 다른 종목/분류로 이동합니다. 문제 이미지, 정답, 해설은 그대로 유지됩니다.</p>
+   <label>이동할 종목</label>
+   <select id="moveTargetSubject" onchange="refreshMoveGroupSel()">${subjectOptions}</select>
+   <label>이동할 분류</label>
+   <select id="moveTargetGroup"></select>
+   <div class="row" style="margin-top:12px">
+     <button class="primary" onclick="applyMoveExam('${sid}','${eid}')">이동 적용</button>
+     <button onclick="closeModal()">취소</button>
+   </div>`);
+ refreshMoveGroupSel(e.groupId||'default');
+}
+
+function refreshMoveGroupSel(preferGid){
+ const sid=document.getElementById('moveTargetSubject').value;
+ const s=getSubject(sid);
+ const groups=s?.groups||[];
+ document.getElementById('moveTargetGroup').innerHTML=groups.map(g=>`<option value="${g.id}" ${g.id===preferGid?'selected':''}>${esc(g.title)}</option>`).join('');
+}
+
+function applyMoveExam(oldSid,eid){
+ const newSid=document.getElementById('moveTargetSubject').value;
+ const newGid=document.getElementById('moveTargetGroup').value;
+ const oldS=getSubject(oldSid), newS=getSubject(newSid);
+ if(!oldS||!newS)return alert('종목을 찾을 수 없습니다.');
+
+ const idx=oldS.exams.findIndex(e=>e.id===eid);
+ if(idx<0)return alert('회차를 찾을 수 없습니다.');
+
+ const exam=oldS.exams[idx];
+ exam.groupId=newGid;
+
+ if(oldSid!==newSid){
+   oldS.exams.splice(idx,1);
+   newS.exams.push(exam);
+ }
+
+ markLocalDirty();
+ saveDB();
+ closeModal();
+
+ if(document.getElementById('adminPanel')) adminSubjects();
+ alert('회차 위치를 변경했습니다.');
+}
+
+function renameExam(sid,eid){markLocalDirty();const e=getExam(sid,eid),t=prompt('새 회차명',e.title);if(t){e.title=t;saveDB();adminSubjects()}} function deleteExam(sid,eid){markLocalDirty();if(confirm('회차 삭제?')){const s=getSubject(sid);s.exams=s.exams.filter(e=>e.id!==eid);saveDB();adminSubjects()}}
+
+function adminAddExam(){document.getElementById('adminPanel').innerHTML=`<div class="card"><h2>문제 추가</h2><label>종목</label><select id="addSubjectSel" onchange="refreshAddGroupSel()">${db.subjects.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join('')}</select><label>분류</label><select id="addGroupSel"></select><label>회차 제목</label><input id="examTitle" placeholder="예: 2026년 3회차 복원문제"><label>총 문제 수</label><input id="qCount" type="number" min="1" max="300" value="60"><button class="primary" onclick="createQuestionForms()">입력 폼 생성</button><div id="questionForms"></div></div>`;refreshAddGroupSel()}
+function refreshAddGroupSel(){const s=getSubject(document.getElementById('addSubjectSel').value);document.getElementById('addGroupSel').innerHTML=(s?.groups||[]).map(g=>`<option value="${g.id}">${esc(g.title)}</option>`).join('')}
+function createQuestionForms(){const n=Math.max(1,Math.min(300,parseInt(document.getElementById('qCount').value||'0')));document.getElementById('questionForms').innerHTML=`<div class="editor-actions"><button class="good" onclick="saveNewExam()">회차 저장</button><span class="pill">${n}문제 입력 중</span></div>${Array.from({length:n},(_,i)=>questionFormHTML(i+1)).join('')}`}
+function questionFormHTML(i){return `<div class="card qform" data-no="${i}" style="margin:12px 0">
+  <h3>${i}번</h3>
+  <div class="pasteBox" tabindex="0" data-role="qimg" onpaste="pasteImage(event,this)">문제 이미지 Ctrl+V</div>
+  <img class="question-img preview hidden" data-role="qprev">
+  <label>정답</label>
+  <select data-role="ans">${[1,2,3,4].map(n=>`<option value="${n}">${n}</option>`).join('')}</select>
+  <label>해설 방식</label>
+  <select data-role="exptype" onchange="toggleExplainInput(this)">
+    <option value="none">해설 없음</option>
+    <option value="text">직접 입력</option>
+    <option value="image">해설 이미지</option>
+  </select>
+  <textarea class="hidden" data-role="exptext" placeholder="해설 입력"></textarea>
+  <div class="pasteBox hidden" tabindex="0" data-role="expimg" onpaste="pasteImage(event,this)">해설 이미지 Ctrl+V</div>
+  <img class="explain-img preview hidden" data-role="expprev">
+</div>`}
+function toggleExplainInput(sel){const p=sel.closest('.qform'),v=sel.value;p.querySelector('[data-role=exptext]').classList.toggle('hidden',v!=='text');p.querySelector('[data-role=expimg]').classList.toggle('hidden',v!=='image')}
+async function pasteImage(ev,el){ev.preventDefault();const item=[...ev.clipboardData.items].find(x=>x.type.startsWith('image/'));if(!item)return alert('클립보드에 이미지가 없습니다.');const data=await fileToDataURL(item.getAsFile()),p=el.closest('.qform');if(el.dataset.role==='qimg'){p.dataset.qimage=data;const img=p.querySelector('[data-role=qprev]');img.src=data;img.classList.remove('hidden')}else{p.dataset.expimage=data;const img=p.querySelector('[data-role=expprev]');img.src=data;img.classList.remove('hidden')}}
+function fileToDataURL(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
+function saveNewExam(){markLocalDirty();const sid=document.getElementById('addSubjectSel').value,gid=document.getElementById('addGroupSel').value,title=document.getElementById('examTitle').value.trim();if(!title)return alert('회차 제목을 입력하세요.');const qs=[...document.querySelectorAll('.qform')].map(f=>({id:uid('q'),image:f.dataset.qimage||'',answer:parseInt(f.querySelector('[data-role=ans]').value),explainType:f.querySelector('[data-role=exptype]').value,explainText:f.querySelector('[data-role=exptext]').value||'',explainImage:f.dataset.expimage||''}));getSubject(sid).exams.push({id:uid('e'),groupId:gid,title,questions:qs});markLocalDirty();saveDB();alert('저장 완료');showAdmin();adminEditQuestions();setTimeout(()=>{document.getElementById('editS').value=sid;refreshEditExamSel();document.getElementById('editE').value=getSubject(sid).exams[getSubject(sid).exams.length-1].id;loadEditQuestions();},0)}
+
+
+
+let manualPdf = {pdf:null, pageNo:1, scale:1.7, canvas:null, start:null, rect:null, crops:[], deleteMode:false, selectedDeletes:new Set()};
+
+function adminPdfManual(){
+ document.getElementById('adminPanel').innerHTML=`<div class="card">
+   <h2>PDF 수동 박스 생성</h2>
+   <p class="small">PDF 페이지 위에서 문제 영역을 마우스로 드래그하면 해당 영역이 문제 이미지로 저장됩니다. 이 화면은 빠른 생성용이라 문제 이미지와 정답만 처리하고, 해설은 저장 후 문제 수정에서 추가하는 방식이 안전합니다. 자동 자르기가 애매한 PDF에 쓰는 반자동 방식입니다.</p>
+   <label>종목</label><select id="manSubjectSel" onchange="refreshManGroupSel()">${db.subjects.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join('')}</select>
+   <label>분류</label><select id="manGroupSel"></select>
+   <label>회차 제목</label><input id="manExamTitle" placeholder="예: 2026년 3회차 복원문제">
+   <label>PDF 파일</label><input id="manPdfInput" type="file" accept="application/pdf">
+   <div class="row" style="margin-top:10px">
+     <button class="primary" onclick="loadManualPdf()">PDF 열기</button>
+     <button onclick="manualPrevPage()">이전 페이지</button>
+     <button onclick="manualNextPage()">다음 페이지</button>
+     <span class="pill">페이지 <span id="manualPageNow">-</span></span>
+     <button class="good" onclick="saveManualExam()">회차 저장</button>
+     <button class="danger" onclick="clearManualCrops()">잘라낸 문제 전체 삭제</button>
+   </div>
+   <div class="manual-toolbar">
+     <b>사용법:</b> PDF에서 문제 전체 영역을 드래그 → 오른쪽 목록에 추가 → 정답만 수정 → 저장.
+     <span class="small">잘못 자른 항목은 삭제하고 다시 드래그하세요.</span>
+   </div>
+   <div class="manual-wrap resizable-manual" id="manualResizableWrap">
+     <div class="manual-page-box"><div id="manualCanvasHolder" class="manual-canvas-holder"></div></div>
+     <div class="manual-resizer" id="manualResizer" title="드래그해서 PDF 영역 넓이 조절"></div>
+     <div class="crop-list">
+       <h3>잘라낸 문제 목록 <span class="pill"><span id="manualCropCount">0</span>개</span></h3>
+       <div class="crop-delete-tools">
+         <button class="danger" onclick="toggleManualDeleteMode()">문제 삭제 모드</button>
+         <button id="manualDeleteSelectedBtn" class="danger hidden" onclick="deleteSelectedManualCrops()">선택 삭제</button>
+         <button id="manualDeleteCancelBtn" class="hidden" onclick="toggleManualDeleteMode(false)">삭제 모드 끄기</button>
+       </div>
+       <div id="manualCropList"></div>
+     </div>
+   </div>
+ </div>`;
+ refreshManGroupSel();
+ initManualResizer();
+ manualPdf={pdf:null,pageNo:1,scale:1.7,canvas:null,start:null,rect:null,crops:[],deleteMode:false,selectedDeletes:new Set()};
+}
+
+function initManualResizer(){
+ const wrap=document.getElementById('manualResizableWrap');
+ const resizer=document.getElementById('manualResizer');
+ if(!wrap||!resizer)return;
+ let dragging=false;
+ resizer.onmousedown=(e)=>{dragging=true;document.body.style.cursor='col-resize';e.preventDefault();};
+ window.onmousemove=(e)=>{
+   if(!dragging)return;
+   const rect=wrap.getBoundingClientRect();
+   const pct=Math.max(38,Math.min(82,((e.clientX-rect.left)/rect.width)*100));
+   wrap.style.setProperty('--pdf-pane-width',pct+'%');
+   localStorage.setItem('cbt_pdf_pane_width',pct);
+ };
+ window.onmouseup=()=>{if(dragging){dragging=false;document.body.style.cursor='';}};
+ const saved=localStorage.getItem('cbt_pdf_pane_width');
+ if(saved)wrap.style.setProperty('--pdf-pane-width',saved+'%');
+}
+
+function refreshManGroupSel(){
+ const s=getSubject(document.getElementById('manSubjectSel').value);
+ document.getElementById('manGroupSel').innerHTML=(s?.groups||[]).map(g=>`<option value="${g.id}">${esc(g.title)}</option>`).join('');
+}
+async function loadManualPdf(){
+ const file=document.getElementById('manPdfInput').files[0];
+ if(!file)return alert('PDF 파일을 선택하세요.');
+ if(!window.pdfjsLib)return alert('PDF 기능을 불러오지 못했습니다. 인터넷 연결 또는 CDN 차단을 확인하세요.');
+ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+ const buf=await file.arrayBuffer();
+ manualPdf.pdf=await pdfjsLib.getDocument({data:buf}).promise;
+ manualPdf.pageNo=1;
+ manualPdf.crops=[];
+ await renderManualPage();
+ renderManualCropList();
+}
+async function renderManualPage(){
+ if(!manualPdf.pdf)return;
+ const page=await manualPdf.pdf.getPage(manualPdf.pageNo);
+ const viewport=page.getViewport({scale:manualPdf.scale});
+ const canvas=document.createElement('canvas');
+ canvas.width=viewport.width; canvas.height=viewport.height;
+ await page.render({canvasContext:canvas.getContext('2d'), viewport}).promise;
+ manualPdf.canvas=canvas;
+ const holder=document.getElementById('manualCanvasHolder');
+ holder.innerHTML='';
+ holder.appendChild(canvas);
+ holder.onmousedown=startManualDrag;
+ holder.onmousemove=moveManualDrag;
+ holder.onmouseup=endManualDrag;
+ holder.onmouseleave=cancelManualDrag;
+ document.getElementById('manualPageNow').textContent=`${manualPdf.pageNo} / ${manualPdf.pdf.numPages}`;
+}
+function manualPrevPage(){if(manualPdf.pdf && manualPdf.pageNo>1){manualPdf.pageNo--;renderManualPage()}}
+function manualNextPage(){if(manualPdf.pdf && manualPdf.pageNo<manualPdf.pdf.numPages){manualPdf.pageNo++;renderManualPage()}}
+function posInHolder(ev){
+ const holder=document.getElementById('manualCanvasHolder');
+ const r=holder.getBoundingClientRect();
+ return {x:ev.clientX-r.left+holder.scrollLeft,y:ev.clientY-r.top+holder.scrollTop};
+}
+function startManualDrag(ev){
+ if(ev.target.tagName!=='CANVAS')return;
+ manualPdf.start=posInHolder(ev);
+ const holder=document.getElementById('manualCanvasHolder');
+ const rect=document.createElement('div');
+ rect.className='crop-rect';
+ rect.style.left=manualPdf.start.x+'px';rect.style.top=manualPdf.start.y+'px';rect.style.width='0px';rect.style.height='0px';
+ holder.appendChild(rect);
+ manualPdf.rect=rect;
+}
+function moveManualDrag(ev){
+ if(!manualPdf.start||!manualPdf.rect)return;
+ const p=posInHolder(ev);
+ const x=Math.min(p.x,manualPdf.start.x), y=Math.min(p.y,manualPdf.start.y);
+ const w=Math.abs(p.x-manualPdf.start.x), h=Math.abs(p.y-manualPdf.start.y);
+ manualPdf.rect.style.left=x+'px';manualPdf.rect.style.top=y+'px';manualPdf.rect.style.width=w+'px';manualPdf.rect.style.height=h+'px';
+}
+function endManualDrag(ev){
+ if(!manualPdf.start||!manualPdf.rect)return;
+ const p=posInHolder(ev);
+ const x=Math.round(Math.min(p.x,manualPdf.start.x)), y=Math.round(Math.min(p.y,manualPdf.start.y));
+ const w=Math.round(Math.abs(p.x-manualPdf.start.x)), h=Math.round(Math.abs(p.y-manualPdf.start.y));
+ manualPdf.rect.remove(); manualPdf.rect=null; manualPdf.start=null;
+ if(w<30||h<30)return;
+ cropManualRect(x,y,w,h);
+}
+function cancelManualDrag(){
+ if(manualPdf.rect){manualPdf.rect.remove();manualPdf.rect=null}
+ manualPdf.start=null;
+}
+function cropManualRect(x,y,w,h){
+ const src=manualPdf.canvas;
+ const c=document.createElement('canvas');
+ c.width=w;c.height=h;
+ c.getContext('2d').drawImage(src,x,y,w,h,0,0,w,h);
+ manualPdf.crops.push({image:c.toDataURL('image/jpeg',0.9),answer:1,explainType:'none',explainText:'',explainImage:''});
+ renderManualCropList();
+}
+
+function renderManualCropList(){
+ const list=document.getElementById('manualCropList');
+ const cnt=document.getElementById('manualCropCount');
+ if(cnt)cnt.textContent=manualPdf.crops.length;
+ const delBtn=document.getElementById('manualDeleteSelectedBtn');
+ const cancelBtn=document.getElementById('manualDeleteCancelBtn');
+ if(delBtn) delBtn.classList.toggle('hidden', !manualPdf.deleteMode);
+ if(cancelBtn) cancelBtn.classList.toggle('hidden', !manualPdf.deleteMode);
+ if(!list)return;
+ list.innerHTML=manualPdf.crops.map((q,i)=>`<div class="crop-item">
+   ${manualPdf.deleteMode?`<input class="crop-del-check" type="checkbox" ${manualPdf.selectedDeletes.has(i)?'checked':''} onchange="setManualDeleteChecked(${i},this.checked)">`:`<b>${i+1}번</b>`}
+   <img src="${q.image}">
+   <select onchange="manualPdf.crops[${i}].answer=parseInt(this.value)">${[1,2,3,4].map(n=>`<option value="${n}" ${q.answer===n?'selected':''}>${n}</option>`).join('')}</select>
+   ${manualPdf.deleteMode?`<span class="small">삭제 선택</span>`:`<button class="danger" onclick="deleteManualCrop(${i})">삭제</button>`}
+ </div>`).join('');
+}
+function toggleManualDeleteMode(force){
+ manualPdf.deleteMode = (typeof force==='boolean') ? force : !manualPdf.deleteMode;
+ manualPdf.selectedDeletes = new Set();
+ renderManualCropList();
+}
+function setManualDeleteChecked(i,checked){
+ if(checked) manualPdf.selectedDeletes.add(i); else manualPdf.selectedDeletes.delete(i);
+}
+function deleteSelectedManualCrops(){
+ const arr=[...manualPdf.selectedDeletes].sort((a,b)=>b-a);
+ if(!arr.length)return alert('삭제할 문제를 체크하세요.');
+ if(!confirm(`${arr.length}개 문제를 삭제할까요? 삭제 후 번호는 자동으로 앞당겨집니다.`))return;
+ arr.forEach(i=>manualPdf.crops.splice(i,1));
+ manualPdf.selectedDeletes=new Set();
+ manualPdf.deleteMode=false;
+ renderManualCropList();
+}
+function deleteManualCrop(i){manualPdf.crops.splice(i,1);renderManualCropList()}
+function clearManualCrops(){if(confirm('잘라낸 문제를 모두 삭제할까요?')){manualPdf.crops=[];manualPdf.selectedDeletes=new Set();renderManualCropList()}}
+function saveManualExam(){
+ const sid=document.getElementById('manSubjectSel').value, gid=document.getElementById('manGroupSel').value, title=document.getElementById('manExamTitle').value.trim();
+ if(!title)return alert('회차 제목을 입력하세요.');
+ if(!manualPdf.crops.length)return alert('잘라낸 문제가 없습니다.');
+ const qs=manualPdf.crops.map(q=>({id:uid('q'),image:q.image,answer:q.answer,explainType:q.explainType,explainText:q.explainText,explainImage:q.explainImage}));
+ getSubject(sid).exams.push({id:uid('e'),groupId:gid,title,questions:qs});
+ markLocalDirty(); saveDB(); alert(`${qs.length}문제 저장 완료`); showAdmin(); adminEditQuestions(); setTimeout(()=>{document.getElementById('editS').value=sid; refreshEditExamSel(); document.getElementById('editE').value=getSubject(sid).exams[getSubject(sid).exams.length-1].id; loadEditQuestions();},0);
+}
+
+function adminPdfAuto(){
+ document.getElementById('adminPanel').innerHTML=`<div class="card">
+   <h2>PDF 자동 문제 생성</h2>
+   <p class="small">PDF를 넣으면 페이지를 이미지로 읽고, 지정한 문제 수만큼 자동으로 잘라 입력 폼을 채웁니다. 자동 분할은 초안이므로 저장 전 잘린 문제만 수정하세요.</p>
+   <label>종목</label><select id="pdfSubjectSel" onchange="refreshPdfGroupSel()">${db.subjects.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join('')}</select>
+   <label>분류</label><select id="pdfGroupSel"></select>
+   <label>회차 제목</label><input id="pdfExamTitle" placeholder="예: 2026년 3회차 복원문제">
+   <div class="row">
+     <div style="flex:1"><label>총 문제 수</label><input id="pdfQCount" type="number" min="1" max="300" value="60"></div>
+     <div style="flex:1"><label>페이지당 문제 수</label><input id="pdfPerPage" type="number" min="1" max="12" value="4"></div>
+   </div>
+   <label>PDF 파일</label><input id="pdfFileInput" type="file" accept="application/pdf">
+   <div class="row" style="margin-top:10px">
+     <button class="primary" onclick="runPdfAuto()">PDF 읽고 자동 생성</button>
+     <button onclick="clearPdfAuto()">초기화</button>
+   </div>
+   <div id="pdfAutoArea"></div>
+ </div>`;
+ refreshPdfGroupSel();
+}
+function refreshPdfGroupSel(){
+ const s=getSubject(document.getElementById('pdfSubjectSel').value);
+ document.getElementById('pdfGroupSel').innerHTML=(s?.groups||[]).map(g=>`<option value="${g.id}">${esc(g.title)}</option>`).join('');
+}
+function clearPdfAuto(){document.getElementById('pdfAutoArea').innerHTML=''}
+async function runPdfAuto(){
+ const file=document.getElementById('pdfFileInput').files[0];
+ if(!file)return alert('PDF 파일을 선택하세요.');
+ if(!window.pdfjsLib)return alert('PDF 기능을 불러오지 못했습니다. 인터넷 연결 또는 CDN 차단을 확인하세요.');
+ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+ const total=Math.max(1,Math.min(300,parseInt(document.getElementById('pdfQCount').value||'60')));
+ const perPage=Math.max(1,Math.min(12,parseInt(document.getElementById('pdfPerPage').value||'4')));
+ const buf=await file.arrayBuffer();
+ const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+ const area=document.getElementById('pdfAutoArea');
+ area.innerHTML='<div class="card">PDF 분석 중...</div>';
+ const images=[];
+ const pageCanvases=[];
+ for(let p=1;p<=pdf.numPages && images.length<total;p++){
+   const page=await pdf.getPage(p);
+   const viewport=page.getViewport({scale:2.0});
+   const canvas=document.createElement('canvas');
+   const ctx=canvas.getContext('2d');
+   canvas.width=viewport.width; canvas.height=viewport.height;
+   await page.render({canvasContext:ctx, viewport}).promise;
+   pageCanvases.push(canvas.toDataURL('image/jpeg',0.86));
+   const cuts=autoCutPage(canvas, perPage, total-images.length);
+   images.push(...cuts);
+ }
+ area.innerHTML=`<div class="editor-actions">
+   <button class="good" onclick="savePdfAutoExam()">자동 생성 회차 저장</button>
+   <span class="pill">${images.length}/${total}문제 생성</span>
+   <span class="small">정답은 기본 1번으로 들어갑니다. 저장 전 필요한 답만 수정하세요.</span>
+ </div>
+ <div class="pdf-grid">
+   <div class="pdf-preview"><h3>PDF 페이지 미리보기</h3>${pageCanvases.map(src=>`<img class="question-img" src="${src}">`).join('')}</div>
+   <div class="pdf-result"><h3>자동 생성 문제</h3><div class="editor-list" id="pdfGeneratedForms">${images.map((src,i)=>autoQuestionFormHTML(i+1,src)).join('')}</div></div>
+ </div>`;
+}
+function autoCutPage(canvas, perPage, remain){
+ const out=[];
+ const w=canvas.width, h=canvas.height;
+ const marginX=Math.round(w*0.06), top=Math.round(h*0.07), bottom=Math.round(h*0.06);
+ const usableH=h-top-bottom;
+ const n=Math.min(perPage, remain);
+ for(let i=0;i<n;i++){
+   const y=top+Math.floor(usableH*i/perPage);
+   const y2=top+Math.floor(usableH*(i+1)/perPage);
+   const ch=y2-y;
+   const c=document.createElement('canvas');
+   c.width=w-marginX*2; c.height=ch;
+   c.getContext('2d').drawImage(canvas, marginX, y, c.width, ch, 0, 0, c.width, ch);
+   out.push(c.toDataURL('image/jpeg',0.86));
+ }
+ return out;
+}
+function autoQuestionFormHTML(i,src){
+ return `<div class="qform editor-row" data-no="${i}" data-qimage="${src}">
+   <b>${i}번</b>
+   <div><img class="preview" data-role="qprev" src="${src}"><div class="pasteBox" tabindex="0" data-role="qimg" onpaste="pasteImage(event,this)">이미지 교체 Ctrl+V</div></div>
+   <select data-role="ans">${[1,2,3,4].map(n=>`<option value="${n}">${n}</option>`).join('')}</select>
+   <select data-role="exptype" onchange="toggleExplainInput(this)"><option value="none">해설 없음</option><option value="text">직접 입력</option><option value="image">해설 이미지</option></select>
+   <textarea class="hidden" data-role="exptext" placeholder="해설 입력"></textarea>
+   <div class="pasteBox hidden" tabindex="0" data-role="expimg" onpaste="pasteImage(event,this)">해설 이미지 Ctrl+V</div>
+   <img class="explain-img preview hidden" data-role="expprev">
+ </div>`;
+}
+function savePdfAutoExam(){
+ const sid=document.getElementById('pdfSubjectSel').value, gid=document.getElementById('pdfGroupSel').value, title=document.getElementById('pdfExamTitle').value.trim();
+ if(!title)return alert('회차 제목을 입력하세요.');
+ const forms=[...document.querySelectorAll('#pdfGeneratedForms .qform')];
+ if(!forms.length)return alert('생성된 문제가 없습니다.');
+ const qs=forms.map(f=>({
+   id:uid('q'),
+   image:f.dataset.qimage||'',
+   answer:parseInt(f.querySelector('[data-role=ans]').value),
+   explainType:f.querySelector('[data-role=exptype]').value,
+   explainText:f.querySelector('[data-role=exptext]').value||'',
+   explainImage:f.dataset.expimage||''
+ }));
+ getSubject(sid).exams.push({id:uid('e'),groupId:gid,title,questions:qs});
+ markLocalDirty(); saveDB(); alert('저장 완료'); showAdmin(); adminEditQuestions(); setTimeout(()=>{document.getElementById('editS').value=sid; refreshEditExamSel(); document.getElementById('editE').value=getSubject(sid).exams[getSubject(sid).exams.length-1].id; loadEditQuestions();},0);
+}
+
+function adminEditQuestions(){document.getElementById('adminPanel').innerHTML=`<div class="card"><h2>문제 수정</h2><label>종목</label><select id="editS" onchange="refreshEditExamSel()">${db.subjects.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join('')}</select><label>회차</label><select id="editE"></select><button class="primary" onclick="loadEditQuestions()">불러오기</button><button onclick="moveSelectedEditExam()">선택 회차 위치 변경</button><div id="editList"></div></div>`;refreshEditExamSel()}
+function refreshEditExamSel(){const s=getSubject(document.getElementById('editS').value);document.getElementById('editE').innerHTML=(s?.exams||[]).map(e=>`<option value="${e.id}">${esc(e.title)} (${e.questions.length})</option>`).join('')}
+
+
+function moveSelectedEditExam(){
+ const sid=document.getElementById('editS')?.value;
+ const eid=document.getElementById('editE')?.value;
+ if(!sid||!eid)return alert('회차를 선택하세요.');
+ moveExamDialog(sid,eid);
+}
+
+function loadEditQuestions(){
+ editDeleteMode=false; editDeleteSelected=new Set();
+ renderEditQuestions();
+}
+function renderEditQuestions(){
+ const sid=document.getElementById('editS').value,eid=document.getElementById('editE').value,e=getExam(sid,eid);
+ if(!e){document.getElementById('editList').innerHTML='<p class="small">회차를 선택하세요.</p>';return;}
+ document.getElementById('editList').innerHTML=`<div class="sep"></div>
+  <div class="row">
+    <span class="pill">현재 ${e.questions.length}문제</span>
+    <button class="good" onclick="openAppendQuestions('${sid}','${eid}')">문제 늘리기</button>
+    <button class="danger" onclick="toggleEditDeleteMode(true)">문제 삭제 모드</button>
+  </div>
+  <div id="editDeleteTools" class="edit-delete-tools ${editDeleteMode?'':'hidden'}">
+    <b>삭제 모드</b>
+    <span class="small">삭제할 문제를 체크한 뒤 선택 삭제를 누르세요. 삭제 후 번호는 자동으로 앞당겨집니다.</span>
+    <button onclick="selectAllEditDelete()">전체 선택</button>
+    <button onclick="clearEditDelete()">전체 해제</button>
+    <button class="danger" onclick="deleteSelectedEditQuestions()">선택 삭제</button>
+    <button onclick="toggleEditDeleteMode(false)">삭제 모드 끄기</button>
+  </div>`+
+  (e.questions||[]).map((q,i)=>`<div class="card" style="margin:12px 0">
+    <div class="row">
+      ${editDeleteMode?`<input class="edit-delete-check" type="checkbox" ${editDeleteSelected.has(i)?'checked':''} onchange="setEditDeleteChecked(${i},this.checked)">`:''}
+      <b>${i+1}번</b>
+      <span class="pill">정답 ${q.answer}</span>
+      ${editDeleteMode?'':`<button onclick="editQuestion('${sid}','${eid}','${q.id}')">수정</button>`}
+    </div>
+    ${q.image?`<img class="question-img preview" src="${q.image}">`:''}
+  </div>`).join('');
+}
+function toggleEditDeleteMode(on){
+ editDeleteMode=!!on; editDeleteSelected=new Set(); renderEditQuestions();
+}
+function setEditDeleteChecked(i,checked){
+ if(checked) editDeleteSelected.add(i); else editDeleteSelected.delete(i);
+}
+function selectAllEditDelete(){
+ const sid=document.getElementById('editS').value,eid=document.getElementById('editE').value,e=getExam(sid,eid);
+ editDeleteSelected=new Set((e?.questions||[]).map((_,i)=>i));
+ renderEditQuestions();
+}
+function clearEditDelete(){editDeleteSelected=new Set(); renderEditQuestions();}
+function deleteSelectedEditQuestions(){
+ const sid=document.getElementById('editS').value,eid=document.getElementById('editE').value,e=getExam(sid,eid);
+ const arr=[...editDeleteSelected].sort((a,b)=>b-a);
+ if(!arr.length)return alert('삭제할 문제를 체크하세요.');
+ if(!confirm(`${arr.length}개 문제를 삭제할까요? 삭제 후 번호는 자동으로 앞당겨집니다.`))return;
+ arr.forEach(i=>e.questions.splice(i,1));
+ editDeleteSelected=new Set(); editDeleteMode=false;
+ markLocalDirty(); saveDB(); refreshEditExamSel(); document.getElementById('editE').value=eid; renderEditQuestions();
+}
+function openAppendQuestions(sid,eid){
+ const e=getExam(sid,eid);
+ document.getElementById('adminPanel').innerHTML=`<div class="card">
+   <div class="row"><h2 style="margin:0">문제 늘리기</h2><button onclick="adminEditQuestions()">← 문제 수정으로 돌아가기</button></div>
+   <p class="small">현재 ${e.questions.length}문제입니다. 추가할 문제 수를 입력한 뒤 입력 폼을 생성하세요.</p>
+   <input id="appendSid" type="hidden" value="${sid}">
+   <input id="appendEid" type="hidden" value="${eid}">
+   <label>추가할 문제 수</label>
+   <input id="appendCount" type="number" min="1" max="200" value="1">
+   <button class="primary" onclick="renderAppendForms('${sid}','${eid}')">추가 입력 폼 생성</button>
+   <div id="appendForms"></div>
+ </div>`;
+}
+function renderAppendForms(sid,eid){
+ const e=getExam(sid,eid);
+ const n=Math.max(1,Math.min(200,parseInt(document.getElementById('appendCount').value||'0')));
+ document.getElementById('appendForms').innerHTML=`<div class="editor-actions"><button class="good" onclick="saveAppendQuestions('${sid}','${eid}')">추가 저장</button><span class="pill">${n}문제 추가 중</span></div>${Array.from({length:n},(_,i)=>questionFormHTML(e.questions.length+i+1)).join('')}`;
+}
+function saveAppendQuestions(sid,eid){
+ const e=getExam(sid,eid);
+ const forms=[...document.querySelectorAll('#appendForms .qform')];
+ const qs=forms.map(f=>({
+   id:uid('q'),
+   image:f.dataset.qimage||'',
+   answer:parseInt(f.querySelector('[data-role=ans]').value),
+   explainType:f.querySelector('[data-role=exptype]').value,
+   explainText:f.querySelector('[data-role=exptext]').value||'',
+   explainImage:f.dataset.expimage||''
+ }));
+ e.questions.push(...qs);
+ markLocalDirty(); saveDB();
+ alert(`${qs.length}문제를 추가했습니다.`);
+ adminEditQuestions();
+ setTimeout(()=>{document.getElementById('editS').value=sid; refreshEditExamSel(); document.getElementById('editE').value=eid; loadEditQuestions();},0);
+}
+function trimQuestions(sid,eid){
+ const e=getExam(sid,eid);
+ if(!e)return;
+ const now=e.questions.length;
+ const target=parseInt(prompt(`현재 ${now}문제입니다. 몇 문제로 줄일까요?\n예: 55를 입력하면 56번 이후 문제가 삭제됩니다.`, now));
+ if(!Number.isFinite(target) || target<0 || target>now) return alert('올바른 숫자가 아닙니다.');
+ if(target===now) return;
+ if(!confirm(`${target+1}번부터 ${now}번까지 삭제됩니다. 계속할까요?`)) return;
+ e.questions=e.questions.slice(0,target);
+ markLocalDirty(); saveDB();
+ refreshEditExamSel();
+ document.getElementById('editE').value=eid;
+ loadEditQuestions();
+}
+function editQuestion(sid,eid,qid){const q=getQuestion(sid,eid,qid);modal(`<h3>문제 수정</h3><div class="pasteBox" tabindex="0" id="editQPaste">문제 이미지 교체 Ctrl+V</div>${q.image?`<img class="question-img preview" id="editQPrev" src="${q.image}">`:`<img class="question-img preview hidden" id="editQPrev">`}<label>정답</label><select id="editAns">${[1,2,3,4].map(n=>`<option value="${n}" ${q.answer===n?'selected':''}>${n}</option>`).join('')}</select><label>해설 방식</label><select id="editExpType"><option value="none">해설 없음</option><option value="text">직접 입력</option><option value="image">이미지</option></select><textarea id="editExpText">${esc(q.explainText||'')}</textarea><div class="pasteBox" tabindex="0" id="editExpPaste">해설 이미지 교체 Ctrl+V</div>${q.explainImage?`<img class="explain-img preview" id="editExpPrev" src="${q.explainImage}">`:`<img class="explain-img preview hidden" id="editExpPrev">`}<div class="row"><button class="primary" onclick="saveEditQuestion('${sid}','${eid}','${qid}')">저장</button><button onclick="closeModal()">취소</button></div>`);document.getElementById('editExpType').value=q.explainType||'none';document.getElementById('editQPaste').onpaste=async ev=>{ev.preventDefault();const item=[...ev.clipboardData.items].find(x=>x.type.startsWith('image/'));if(!item)return alert('이미지가 없습니다');window.tmpEditQ=await fileToDataURL(item.getAsFile());const img=document.getElementById('editQPrev');img.src=window.tmpEditQ;img.classList.remove('hidden')};document.getElementById('editExpPaste').onpaste=async ev=>{ev.preventDefault();const item=[...ev.clipboardData.items].find(x=>x.type.startsWith('image/'));if(!item)return alert('이미지가 없습니다');window.tmpEditExp=await fileToDataURL(item.getAsFile());const img=document.getElementById('editExpPrev');img.src=window.tmpEditExp;img.classList.remove('hidden')}}
+function saveEditQuestion(sid,eid,qid){markLocalDirty();const q=getQuestion(sid,eid,qid);q.answer=parseInt(document.getElementById('editAns').value);q.explainType=document.getElementById('editExpType').value;q.explainText=document.getElementById('editExpText').value;if(window.tmpEditQ){q.image=window.tmpEditQ;window.tmpEditQ=null}if(window.tmpEditExp){q.explainImage=window.tmpEditExp;window.tmpEditExp=null}saveDB();closeModal();loadEditQuestions()}
+function deleteQuestion(sid,eid,qid){markLocalDirty();if(confirm('문제를 삭제할까요?')){const e=getExam(sid,eid);e.questions=e.questions.filter(q=>q.id!==qid);saveDB();loadEditQuestions()}}
+
+function modal(html){document.getElementById('modalRoot').innerHTML=`<div class="modal"><div class="card">${html}</div></div>`}function closeModal(){document.getElementById('modalRoot').innerHTML=''}
+
+async function loadRemoteDataJson(){
+  try{
+    const res = await fetch('data.json?ts=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) return;
+    const remote = await res.json();
+    normalizeDB(remote);
+    const localWrong = db.wrongNote || {};
+    db.subjects = remote.subjects || [];
+    db.meta = remote.meta || {};
+    db.wrongNote = localWrong;
+    localStorage.setItem('cbt_manager_local_dirty','0');
+    saveDB();
+    showHome();
+  }catch(e){
+    console.log('data.json 없음 또는 로드 실패. localStorage 데이터를 사용합니다.');
+  }
+}
+function markLocalDirty(){
+  localStorage.setItem('cbt_manager_local_dirty','1');
+}
+function exportPublicData(){
+  const publicData = {
+    meta:{
+      app:'CBT Manager',
+      version:'v8',
+      exportedAt:new Date().toISOString(),
+      note:'이 파일은 공유용 문제 데이터입니다. 오답노트와 개인 풀이 기록은 포함되지 않습니다.'
+    },
+    subjects: db.subjects || [],
+    wrongNote: {}
+  };
+  const blob=new Blob([JSON.stringify(publicData,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='data.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  localStorage.setItem('cbt_manager_local_dirty','0');
+  alert('data.json을 내보냈습니다. Netlify에는 index.html과 data.json을 같은 폴더에 넣어 올리면 됩니다.');
+}
+
+
+async function fetchImageBlobForZip(path){
+  const clean = String(path || '').replace(/^\.?\//,'');
+  const res = await fetch(clean + '?ts=' + Date.now(), {cache:'no-store'});
+  if(!res.ok) throw new Error('이미지 다운로드 실패: ' + clean);
+  return await res.blob();
+}
+function fileNameFromImagePath(path, fallback){
+  const clean = String(path || '').split('?')[0].split('#')[0];
+  const name = clean.split('/').pop();
+  return name || fallback;
+}
+
+function dataUrlToBlob(dataUrl){
+  const parts=dataUrl.split(',');
+  const mime=(parts[0].match(/:(.*?);/)||[])[1]||'application/octet-stream';
+  const bin=atob(parts[1]||'');
+  const arr=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+  return new Blob([arr],{type:mime});
+}
+function imageToWebpBlob(src, quality=0.82){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>{
+      const c=document.createElement('canvas');
+      c.width=img.naturalWidth||img.width;
+      c.height=img.naturalHeight||img.height;
+      c.getContext('2d').drawImage(img,0,0);
+      c.toBlob(b=>b?resolve(b):reject(new Error('WebP 변환 실패')),'image/webp',quality);
+    };
+    img.onerror=reject;
+    img.src=src;
+  });
+}
+function safeFilePart(s){
+  return String(s||'item').replace(/[\\/:*?"<>|#%&{}$!`'@+=]/g,'_').replace(/\s+/g,'_').slice(0,60);
+}
+async function exportNetlifyZip(){
+  if(!window.JSZip){
+    alert('ZIP 생성 라이브러리를 불러오지 못했습니다. 인터넷 연결 후 다시 시도하세요.');
+    return;
+  }
+  if(!db.subjects || !db.subjects.length){
+    alert('내보낼 문제가 없습니다.');
+    return;
+  }
+  const ok=confirm('Netlify 업로드용 ZIP을 생성합니다. 기존 서버 이미지도 다시 받아서 images 폴더에 포함합니다.');
+  if(!ok)return;
+
+  const zip=new JSZip();
+  const imagesFolder=zip.folder('images');
+  const outData=JSON.parse(JSON.stringify({
+    meta:{
+      app:'등용문 CBT',
+      version:'netlify-webp-portable',
+      exportedAt:new Date().toISOString(),
+      note:'Netlify 배포용 데이터입니다. 문제 이미지는 images 폴더의 WebP 파일을 참조합니다.'
+    },
+    subjects:db.subjects||[],
+    wrongNote:{}
+  }));
+
+  let count=0, fetched=0, converted=0, failed=0;
+  const failedImages=[];
+  const usedNames=new Set();
+
+  function uniqueName(name){
+    let safe=String(name||'image.webp').replace(/[\\/:*?"<>|#%&{}$!`'@+=]/g,'_').replace(/\s+/g,'_');
+    if(!safe.includes('.')) safe += '.webp';
+    let base=safe.replace(/(\.[^.]+)$/,'');
+    let ext=(safe.match(/(\.[^.]+)$/)||['.webp'])[0];
+    let out=safe, n=2;
+    while(usedNames.has(out)){ out=`${base}_${n}${ext}`; n++; }
+    usedNames.add(out);
+    return out;
+  }
+
+  async function handleImageField(q, field, prefix, s, e, qi){
+    const val=q[field];
+    if(!val) return;
+
+    if(String(val).startsWith('data:image')){
+      count++;
+      const fname=uniqueName(`${prefix}_${safeFilePart(s.title)}_${safeFilePart(e.title)}_${String(qi+1).padStart(3,'0')}_${String(count).padStart(6,'0')}.webp`);
+      try{
+        const blob=await imageToWebpBlob(val,0.82);
+        imagesFolder.file(fname,blob);
+        q[field]='images/'+fname;
+        converted++;
+      }catch(err){
+        const blob=dataUrlToBlob(val);
+        const fallback=uniqueName(fname.replace(/\.webp$/,'.png'));
+        imagesFolder.file(fallback,blob);
+        q[field]='images/'+fallback;
+        converted++;
+      }
+      return;
+    }
+
+    if(String(val).startsWith('images/')){
+      count++;
+      const fname=uniqueName(fileNameFromImagePath(val, `${prefix}_${String(count).padStart(6,'0')}.webp`));
+      try{
+        const blob=await fetchImageBlobForZip(val);
+        imagesFolder.file(fname,blob);
+        q[field]='images/'+fname;
+        fetched++;
+      }catch(err){
+        console.warn(err);
+        failed++;
+        failedImages.push(String(val));
+        q[field]=val;
+      }
+      return;
+    }
+  }
+
+  for(const s of outData.subjects){
+    for(const e of (s.exams||[])){
+      for(let qi=0; qi<(e.questions||[]).length; qi++){
+        const q=e.questions[qi];
+        await handleImageField(q,'image','q',s,e,qi);
+        await handleImageField(q,'explainImage','explain',s,e,qi);
+      }
+    }
+  }
+
+  if(failed>0){
+    const preview=failedImages.slice(0,20).map(x=>'• '+x).join('\n');
+    const more=failedImages.length>20?`\n외 ${failedImages.length-20}개`:'';
+    alert(`ZIP 생성을 중단했습니다.\n이미지 ${failed}개를 가져오지 못했습니다.\n누락된 이미지가 있는 ZIP은 생성하지 않습니다.\n\n실패 경로:\n${preview}${more}`);
+    return;
+  }
+
+  zip.file('data.json', JSON.stringify(outData,null,2));
+
+  let htmlText='';
+  try{
+    const res=await fetch(location.href.split('#')[0],{cache:'no-store'});
+    if(res.ok) htmlText=await res.text();
+  }catch(e){}
+  if(!htmlText){
+    htmlText='<!doctype html>\n'+document.documentElement.outerHTML;
+  }
+  zip.file('index.html', htmlText);
+
+  const readme=`등용문 CBT GitHub Pages 업로드 주의사항
+
+[ZIP 구성]
+- index.html
+- data.json
+- images/
+- README.txt
+
+※ image-manifest.json 같은 별도 이미지 JSON 파일은 생성하지 않습니다.
+
+[반드시 지켜야 할 업로드 순서]
+1. 내려받은 ZIP 파일을 먼저 완전히 압축 해제합니다.
+2. ZIP 내부 화면에서 파일을 바로 드래그하지 마세요.
+3. GitHub 저장소의 기존 images 폴더를 먼저 삭제하고 커밋합니다.
+4. 압축 해제된 새 images 폴더를 통째로 업로드합니다.
+5. data.json은 항상 새 파일로 교체합니다.
+6. index.html은 프로그램이 변경된 경우 새 파일로 교체합니다.
+
+[중요]
+- GitHub 웹 업로드는 같은 이름의 파일은 덮어쓰지만, 예전에 있던 불필요한 파일을 자동으로 삭제하지 않습니다.
+- 따라서 이미지 삭제나 교체 내용을 정확히 반영하려면 기존 images 폴더를 지운 뒤 새 images 폴더 전체를 올려야 합니다.
+- ZIP 안의 files/folders는 반드시 압축 해제된 실제 폴더에서 업로드하세요. 압축 파일 내부에서 직접 드래그하면 images 폴더 구조가 깨질 수 있습니다.
+- “ZIP 생성을 중단했습니다” 메시지가 나오면 기존 이미지 중 일부를 가져오지 못한 상태입니다. 불완전한 ZIP은 생성되지 않으므로, GitHub Pages 배포 상태와 images 경로를 확인한 뒤 다시 생성하세요.
+- ZIP 생성 완료 메시지에서 이미지 다운로드 실패가 0개인지 확인하세요.
+
+[기타]
+- 오답노트와 문제 체크 기록은 각 사용자 브라우저에 저장됩니다.
+- data.json에는 이미지 경로가 저장되고 실제 이미지는 images 폴더에 들어 있습니다.
+- 생성된 ZIP은 날짜별로 별도 보관하는 것을 권장합니다.
+`;
+  zip.file('README.txt',readme);
+
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='deungyongmun_cbt_netlify_'+new Date().toISOString().slice(0,10)+'.zip';
+  a.click();
+  URL.revokeObjectURL(a.href);
+
+  let msg=`ZIP 생성 완료\n`;
+  msg+=`새로 변환한 이미지: ${converted}개\n`;
+  msg+=`서버에서 다시 받은 이미지: ${fetched}개\n`;
+  msg+=`이미지 다운로드 실패: 0개`;
+  alert(msg);
+}
+
+function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cbt_backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);normalizeDB(data);if(confirm('현재 데이터를 백업 데이터로 교체할까요?')){db=data;saveDB();showHome()}}catch(e){alert('백업 파일 형식이 올바르지 않습니다.')}};r.readAsText(f)}
+applyTheme();updateAdminButton();showHome();loadRemoteDataJson();
+</script>
+</body>
+</html>

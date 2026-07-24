@@ -1,9 +1,9 @@
 {
   "meta": {
     "app": "등용문 CBT",
-    "version": "portable-webp-stable-v2",
-    "exportedAt": "2026-07-24T12:57:43.586Z",
-    "note": "배포용 데이터입니다. 실제 이미지는 images 폴더에 있으며 파일명은 문제 ID 기준으로 고정됩니다."
+    "version": "netlify-webp-portable",
+    "exportedAt": "2026-07-24T13:13:53.675Z",
+    "note": "Netlify 배포용 데이터입니다. 문제 이미지는 images 폴더의 WebP 파일을 참조합니다."
   },
   "subjects": [
     {
@@ -13,103 +13,13 @@
         {
           "id": "g_mr1ueq7u_4lnzbj",
           "title": "2026년 3회차 복원"
+        },
+        {
+          "id": "g_mryyfcrd_qe08ey",
+          "title": "2027년 1회차 복원"
         }
       ],
       "exams": [
-        {
-          "id": "e_mr221jkx_lp4w6j",
-          "groupId": "g_mr1ueq7u_4lnzbj",
-          "title": "2026년 3회차 복원_1",
-          "questions": [
-            {
-              "id": "q_mr221jkx_mhjolz",
-              "image": "images/q_q_mr221jkx_mhjolz.webp",
-              "answer": 3,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr221jkx_wp9l4b",
-              "image": "images/q_q_mr221jkx_wp9l4b.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr221jkx_8hu3om",
-              "image": "images/q_q_mr221jkx_8hu3om.webp",
-              "answer": 3,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr221jkx_82rltp",
-              "image": "images/q_q_mr221jkx_82rltp.webp",
-              "answer": 3,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr221jkx_ohoz5n",
-              "image": "images/q_q_mr221jkx_ohoz5n.webp",
-              "answer": 3,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            }
-          ]
-        },
-        {
-          "id": "e_mr223alt_0yqqd2",
-          "groupId": "g_mr1ueq7u_4lnzbj",
-          "title": "2026년 3회차 복원_2",
-          "questions": [
-            {
-              "id": "q_mr223alt_bj01p5",
-              "image": "images/q_q_mr223alt_bj01p5.webp",
-              "answer": 2,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr223alt_0pvsp1",
-              "image": "images/q_q_mr223alt_0pvsp1.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr223alt_zcyooi",
-              "image": "images/q_q_mr223alt_zcyooi.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr223alt_f7c1r9",
-              "image": "images/q_q_mr223alt_f7c1r9.webp",
-              "answer": 4,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            },
-            {
-              "id": "q_mr223alt_lfxsia",
-              "image": "images/q_q_mr223alt_lfxsia.webp",
-              "answer": 1,
-              "explainType": "none",
-              "explainText": "",
-              "explainImage": ""
-            }
-          ]
-        },
         {
           "id": "e_mr225fbt_mjafmc",
           "groupId": "g_mr1ueq7u_4lnzbj",
@@ -297,31 +207,43 @@
               "explainImage": ""
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "s_mr1ui1fm_rzw29v",
+      "title": "전기기사",
+      "groups": [
         {
-          "id": "e_mryy3iw9_9hrjcl",
-          "groupId": "g_mr1ueq7u_4lnzbj",
-          "title": "최종테스트",
+          "id": "g_mryynpmx_9a703a",
+          "title": "전기기사 2027년 1회차"
+        }
+      ],
+      "exams": [
+        {
+          "id": "e_mryylyn5_yb65h6",
+          "groupId": "g_mryynpmx_9a703a",
+          "title": "2026년 3회차 복원_9",
           "questions": [
             {
-              "id": "q_mryy3iw9_hs63lu",
-              "image": "images/q_q_mryy3iw9_hs63lu.webp",
+              "id": "q_mryylyn5_7d3ijo",
+              "image": "images/q_전기기사_2026년_3회차_복원_9_001_000021.webp",
               "answer": 1,
               "explainType": "none",
               "explainText": "",
               "explainImage": ""
             },
             {
-              "id": "q_mryy3iw9_772tto",
-              "image": "images/q_q_mryy3iw9_772tto.webp",
+              "id": "q_mryylyn5_b4imel",
+              "image": "images/q_전기기사_2026년_3회차_복원_9_002_000022.webp",
               "answer": 1,
               "explainType": "none",
               "explainText": "",
               "explainImage": ""
             },
             {
-              "id": "q_mryy3iw9_tff6uv",
-              "image": "images/q_q_mryy3iw9_tff6uv.webp",
+              "id": "q_mryylyn5_bwk43x",
+              "image": "images/q_전기기사_2026년_3회차_복원_9_003_000023.webp",
               "answer": 1,
               "explainType": "none",
               "explainText": "",
@@ -332,15 +254,20 @@
       ]
     },
     {
-      "id": "s_mr1ui1fm_rzw29v",
-      "title": "전기기사",
+      "id": "s_mr1ut8sq_v8l8hi",
+      "title": "전기산업기사",
       "groups": [],
       "exams": []
     },
     {
-      "id": "s_mr1ut8sq_v8l8hi",
-      "title": "전기산업기사",
-      "groups": [],
+      "id": "s_mryye6op_4zjyfk",
+      "title": "승강기기능사",
+      "groups": [
+        {
+          "id": "default",
+          "title": "기본"
+        }
+      ],
       "exams": []
     }
   ],

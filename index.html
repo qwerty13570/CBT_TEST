@@ -139,6 +139,7 @@ table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--li
     <button onclick="showHome()">홈</button>
     <button onclick="showWrongNote()">오답노트</button>
     <button onclick="openAdminLogin()">관리자</button>
+    <button id="adminHomeBtn" class="hidden primary" onclick="showAdmin()">관리자 화면</button>
     <button id="adminExitBtn" class="hidden" onclick="exitAdmin()">관리자 나가기</button>
     <button onclick="toggleTheme()">다크/라이트</button>
     <button id="netlifyZipBtn" class="hidden" onclick="exportNetlifyZip()">Netlify ZIP 내보내기</button>
@@ -185,7 +186,14 @@ function getExam(sid,eid){return getSubject(sid)?.exams.find(e=>e.id===eid)}
 function getQuestion(sid,eid,qid){return getExam(sid,eid)?.questions.find(q=>q.id===qid)}
 function applyTheme(){document.body.classList.toggle('dark',(localStorage.getItem('cbt_theme')||'light')==='dark')}
 function toggleTheme(){localStorage.setItem('cbt_theme',document.body.classList.contains('dark')?'light':'dark');applyTheme()}
-function updateAdminButton(){const b=document.getElementById('adminExitBtn'),z=document.getElementById('netlifyZipBtn');if(b)b.classList.toggle('hidden',!adminOn);if(z)z.classList.toggle('hidden',!adminOn)}
+function updateAdminButton(){
+ const b=document.getElementById('adminExitBtn');
+ const a=document.getElementById('adminHomeBtn');
+ const z=document.getElementById('netlifyZipBtn');
+ if(b)b.classList.toggle('hidden',!adminOn);
+ if(a)a.classList.toggle('hidden',!adminOn);
+ if(z)z.classList.toggle('hidden',!adminOn);
+}
 function exitAdmin(){
  adminOn=false;
  updateAdminButton();
